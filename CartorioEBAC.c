@@ -6,6 +6,13 @@
 
 int registro() //Função responsavel por cadastrar o usuario
 {
+	
+	int opcao=2;//variavel escolha de saida
+	
+	system("cls");
+	
+	setlocale(LC_ALL, "Portuguese"); //Definindo a linguagem
+	
   // inicio das variaveis strings
   char arquivo[40];
   char cpf[40];
@@ -55,13 +62,39 @@ int registro() //Função responsavel por cadastrar o usuario
   file = fopen (arquivo, "a");
   fprintf(file,cargo);
   fclose(file);
+  
+  system("cls");
+  
+  //inicio da escolha de saida
+  printf("Deseja registrar mais nomes?\n");
+  printf("\t 1-Sim!\n");
+  printf("\t 2-Não!\n");
+  printf("Opcão:");
+  
+  
+  scanf("%d",&opcao);
 
-  system("pause");//pausa a tela ate que o usuario queira
+  switch(opcao)
+  {
+  	case 1:
+  	registro();	
+  	break;
+  	
+  	case 2:
+  	main();	
+  	break;
+  
+  }//fim da escolha de saida
+
 }
 
 int consulta()
 {
   setlocale(LC_ALL, "Portuguese"); //Definindo a linguagem
+  
+  int opcao=3;//variavel escolha de saida
+  
+  system("cls");
   
   char cpf[40];
   char conteudo[200];
@@ -88,12 +121,34 @@ int consulta()
   }
   
   system("pause");
+  system("cls");
+  
+  printf("Deseja consulta outro nome?\n");//inicio da escolha de saida
+  printf("\t1 - Sim!\n");
+  printf("\t2 - Não!\n");
+  printf("Opção:");
+  
+  scanf("%d",&opcao);
+  
+  switch(opcao)
+  {
+  	case 1:
+  	consulta();
+	break;
+	
+	case 2:
+	main();	
+  } //Fim da escolha de saida
   
   
 }
 
 int deletar()
 {
+  
+  int opcao=4; //variavel escolha de saida
+  
+  system("cls");
   
   setlocale(LC_ALL, "Portuguese");
   
@@ -112,6 +167,26 @@ int deletar()
   	printf("Usuário não se encontra no sistema!. \n");
   	system("pause");
   }
+  
+  system("cls");
+  
+  printf("Deseja deletar mais nomes?\n");//inicio da escolha de saida
+  printf("\t1 - Sim!\n");
+  printf("\t2 - Não!\n");
+  printf("Opção:");
+  
+  scanf("%d",&opcao);
+  
+  switch (opcao)
+  {
+    case 1:
+    deletar();
+	break;
+	
+	case 2:
+	main();
+	break;	
+  }// fim da escolha de saida
   
 }
 
@@ -134,6 +209,7 @@ int main()
 	  printf("Escolha a opção desejada do menu: \n\n");	printf("\t1 - Registrar Nomes\n");
 	  printf("\t2 - Consulta Nomes\n");
 	  printf("\t3 - Deletar Nomes\n");
+	  printf("\t4 - Sair do Sistema\n");
 	  printf("Opção:"); //fim do menu
     
       scanf("%d", &opcao); //armazenando a escolha do usuario
@@ -152,6 +228,11 @@ int main()
 		
 		case 3:
 		deletar();
+		break;
+		
+		case 4:
+		printf("Obrigado por utilizar o sistema!\n");
+		return 0;
 		break;
 		
 		default:
